@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplomado en IAGen para la Transformación Digital Educativa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --uqr-green: #00492C;
+            --uqr-gold: #CAA800;
+            --uqr-white: #FFFFFF;
+            --executive-gray: #1a1a1a;
+            --light-gray: #f8f9fa;
+            --text-dark: #2D3748;
+            --text-light: #718096;
+            --shadow-executive: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            --transition-executive: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        /* Header Executive */
+        .executive-header {
+            background: var(--uqr-white);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 73, 44, 0.1);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0, 73, 44, 0.06);
+        }
+
+        .header-content-executive {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-logo-image {
+            height: 55px;
+            width: auto;
+            filter: brightness(0.9);
+        }
+
+        .divider-vertical {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(180deg, transparent, var(--uqr-gold), transparent);
+        }
+
+        .header-titles-executive {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-main-executive {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--uqr-green);
+            letter-spacing: -0.02em;
+            text-align: left;
+        }
+
+        .title-subtitle-executive {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-top: 0.2rem;
+            text-align: left;
+        }
+
+        /* Navigation Executive */
+        .nav-executive {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.75rem;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 73, 44, 0.08);
+        }
+
+        .nav-item-executive {
+            padding: 0.9rem 1.8rem;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition-executive);
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item-executive::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(202, 168, 0, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-item-executive:hover::before {
+            left: 100%;
+        }
+
+        .nav-item-executive:hover {
+            background: rgba(0, 73, 44, 0.03);
+            color: var(--uqr-green);
+        }
+
+        .nav-item-executive.active {
+            background: var(--uqr-green);
+            color: var(--uqr-white);
+            box-shadow: 0 8px 25px rgba(0, 73, 44, 0.2);
+        }
+
+        .nav-item-executive i {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .executive-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-executive {
+            display: none;
+            animation: fadeInUpExecutive 0.8s ease forwards;
+        }
+
+        .section-executive.active {
+            display: block;
+        }
+
+        @keyframes fadeInUpExecutive {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero-executive {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 73, 44, 0.05);
+            border: 1px solid rgba(0, 73, 44, 0.1);
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--uqr-green);
+        }
+
+        .hero-badge i {
+            color: var(--uqr-gold);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--executive-gray);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--uqr-green) 0%, #006641 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Cards Executive */
+        .cards-grid-executive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card-executive {
+            background: var(--uqr-white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow-executive);
+            border: 1px solid rgba(0, 73, 44, 0.08);
+            transition: var(--transition-executive);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-executive::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--uqr-gold) 0%, #e6c200 100%);
+        }
+
+        .card-executive:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-icon-executive {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(0, 73, 44, 0.1) 0%, rgba(202, 168, 0, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--uqr-green);
+        }
+
+        .card-title-executive {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--executive-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        .card-content-executive {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        /* Accordion Executive */
+        .accordion-executive {
+            margin-top: 2rem;
+        }
+
+        .accordion-item-executive {
+            background: var(--uqr-white);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-executive);
+            border: 1px solid rgba(0, 73, 44, 0.08);
+            overflow: hidden;
+            transition: var(--transition-executive);
+        }
+
+        .accordion-item-executive:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-header-executive {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition-executive);
+        }
+
+        .accordion-title-executive {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--executive-gray);
+            flex: 1;
+            padding-right: 2rem;
+            text-align: left;
+        }
+
+        .accordion-indicator-executive {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(0, 73, 44, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--uqr-green);
+            transition: var(--transition-executive);
+            flex-shrink: 0;
+        }
+
+        .accordion-item-executive.active .accordion-indicator-executive {
+            background: var(--uqr-green);
+            color: var(--uqr-white);
+            transform: rotate(180deg);
+        }
+
+        .accordion-content-executive {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: rgba(0, 73, 44, 0.02);
+        }
+
+        .accordion-item-executive.active .accordion-content-executive {
+            max-height: 500px;
+        }
+
+        .accordion-text-executive {
+            padding: 0 2rem 2rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+            border-top: 1px solid rgba(0, 73, 44, 0.08);
+            padding-top: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Instructors Grid */
+        .instructors-grid-executive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .instructor-card-executive {
+            background: var(--uqr-white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-executive);
+            border: 1px solid rgba(0, 73, 44, 0.08);
+            transition: var(--transition-executive);
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instructor-card-executive::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--uqr-gold) 0%, var(--uqr-green) 100%);
+        }
+
+        .instructor-card-executive:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .instructor-image-executive {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: var(--transition-executive);
+        }
+
+        .instructor-image-executive:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 4px var(--uqr-gold);
+        }
+
+        .instructor-image-executive img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instructor-name-executive {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--executive-gray);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .instructor-expertise-executive {
+            font-size: 1rem;
+            color: var(--uqr-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(202, 168, 0, 0.1);
+            border-radius: 50px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .instructor-module-executive {
+            font-size: 0.9rem;
+            color: var(--uqr-green);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .instructor-bio-executive {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        /* Modal Executive */
+        .modal-executive {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal-content-executive {
+            background: var(--uqr-white);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--uqr-gold);
+        }
+
+        .modal-close-executive {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--uqr-green);
+            color: var(--uqr-white);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition-executive);
+        }
+
+        .modal-close-executive:hover {
+            background: var(--uqr-gold);
+            transform: rotate(90deg);
+        }
+
+        .modal-header-executive {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(0, 73, 44, 0.1);
+            text-align: center;
+        }
+
+        .modal-title-executive {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--executive-gray);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .modal-subtitle-executive {
+            font-size: 1.2rem;
+            color: var(--uqr-gold);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .modal-module-executive {
+            font-size: 1.1rem;
+            color: var(--uqr-green);
+            font-weight: 700;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .modal-bio-executive {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .modal-bio-executive p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Modules System */
+        .modules-executive {
+            margin-top: 3rem;
+        }
+
+        .modules-nav-executive {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .module-nav-executive {
+            padding: 1.2rem 2rem;
+            background: var(--uqr-white);
+            border: 1px solid rgba(0, 73, 44, 0.1);
+            border-radius: 16px;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition-executive);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .module-nav-executive:hover {
+            background: rgba(0, 73, 44, 0.03);
+            border-color: var(--uqr-gold);
+            transform: translateY(-2px);
+        }
+
+        .module-nav-executive.active {
+            background: var(--uqr-green);
+            color: var(--uqr-white);
+            border-color: var(--uqr-green);
+            box-shadow: 0 10px 25px rgba(0, 73, 44, 0.2);
+        }
+
+        .module-content-executive {
+            background: var(--uqr-white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-executive);
+            border: 1px solid rgba(0, 73, 44, 0.08);
+            display: none;
+            animation: slideInUpExecutive 0.6s ease forwards;
+        }
+
+        .module-content-executive.active {
+            display: block;
+        }
+
+        @keyframes slideInUpExecutive {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .module-header-executive {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(0, 73, 44, 0.1);
+        }
+
+        .module-header-executive i {
+            font-size: 2.5rem;
+            color: var(--uqr-gold);
+        }
+
+        .module-title-executive {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--executive-gray);
+            margin: 0;
+            text-align: left;
+        }
+
+        .module-description-executive {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            text-align: justify;
+        }
+
+        .module-grid-executive {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .module-info-executive {
+            background: rgba(0, 73, 44, 0.03);
+            border-radius: 16px;
+            padding: 2rem;
+            border-left: 4px solid var(--uqr-gold);
+        }
+
+        .module-info-title-executive {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--executive-gray);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-align: left;
+        }
+
+        .module-info-title-executive i {
+            color: var(--uqr-green);
+        }
+
+        .module-info-content-executive {
+            color: var(--text-light);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .module-features-executive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-executive {
+            background: rgba(0, 73, 44, 0.03);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: var(--transition-executive);
+            border: 1px solid rgba(0, 73, 44, 0.05);
+        }
+
+        .feature-executive:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 73, 44, 0.05);
+        }
+
+        .feature-icon-executive {
+            font-size: 2rem;
+            color: var(--uqr-green);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .feature-title-executive {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--executive-gray);
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .feature-description-executive {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        /* Footer Executive */
+        .executive-footer {
+            background: var(--uqr-green);
+            padding: 1.5rem 0;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .executive-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--uqr-gold) 0%, #e6c200 100%);
+        }
+
+        .footer-content-executive {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-institutional {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--uqr-white);
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .footer-departments {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .footer-rights {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .cards-grid-executive {
+                grid-template-columns: 1fr;
+            }
+            
+            .instructors-grid-executive {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-grid-executive {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content-executive {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .nav-executive {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-item-executive {
+                justify-content: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .module-header-executive {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .modules-nav-executive {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .module-nav-executive {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .modal-content-executive {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .executive-main {
+                padding: 2rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .card-executive {
+                padding: 2rem;
+            }
+            
+            .module-content-executive {
+                padding: 2rem;
+            }
+            
+            .feature-executive {
+                padding: 1.5rem;
+            }
+            
+            .module-info-executive {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="executive-header">
+        <div class="header-content-executive">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/C3wvTqVV/Escudo-UQRoo-SIN-FONDO.png" alt="Logo UQRoo" class="header-logo-image">
+                <div class="divider-vertical"></div>
+                <div class="header-titles-executive">
+                    <div class="title-main-executive">Diplomado en IAGen para la Transformación Digital Educativa</div>
+                    <div class="title-subtitle-executive">Innovación Académica de Vanguardia</div>
+                </div>
+            </div>
+            
+            <nav class="nav-executive">
+                <button class="nav-item-executive active" data-section="description">
+                    <i class="fas fa-rocket"></i>
+                    <span>Descripción</span>
+                </button>
+                <button class="nav-item-executive" data-section="profiles">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Perfiles</span>
+                </button>
+                <button class="nav-item-executive" data-section="methodology">
+                    <i class="fas fa-sitemap"></i>
+                    <span>Metodología</span>
+                </button>
+                <button class="nav-item-executive" data-section="instructors">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Instructores</span>
+                </button>
+                <button class="nav-item-executive" data-section="modules">
+                    <i class="fas fa-cube"></i>
+                    <span>Módulos</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="executive-main">
+        <section id="description" class="section-executive active">
+            <div class="hero-executive">
+                <div class="hero-badge">
+                    <i class="fas fa-gem"></i>
+                    <span>Programa Ejecutivo de Vanguardia</span>
+                </div>
+                <h1 class="hero-title">
+                    Lidera la Transformación <span>Digital Educativa</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Domina la Inteligencia Artificial Generativa para revolucionar la práctica docente 
+                    y posicionar tu institution a la vanguardia educativa mundial.
+                </p>
+                
+                <div class="hero-badge">
+                    <i class="fas fa-clock"></i>
+                    <span>130 horas | 6 módulos | Modalidad en línea</span>
+                </div>
+            </div>
+
+            <div class="cards-grid-executive">
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title-executive">Objetivo Estratégico</h3>
+                    <div class="card-content-executive">
+                        <p>Capacitar al personal directivo y profesorado en el dominio estratégico y ético de la Inteligencia Artificial Generativa (IAGen), para integrarla en el diseño de recursos educativos, la evaluación del aprendizaje, el entrenamiento de agentes educativos y el análisis de datos.</p>
+                        <p style="margin-top: 1rem;">Optimizar la práctica docente, mejorar la calidad educativa, fortalecer la toma de decisiones basada en datos y fomentar una cultura de innovación sostenible y vanguardia educativa.</p>
+                    </div>
+                </div>
+
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title-executive">Audiencia Ejecutiva</h3>
+                    <div class="card-content-executive">
+                        <p><strong>Personal Directivo y de Liderazgo Educativo:</strong> Directores, subdirectores, coordinadores académicos y responsables de áreas tecnológicas o innovación educativa, que buscan liderar la integración estratégica de la Inteligencia Artificial Generativa.</p>
+                        <p style="margin-top: 1rem;"><strong>Cuerpo Docente y Asesores Pedagógicos:</strong> Profesorado en servicio de los niveles Educación Básica, Media Superior y Superior, así como formadores de docentes y asesores técnico-pedagógicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profiles" class="section-executive">
+            <div class="hero-executive">
+                <h1 class="hero-title">Perfiles de <span>Excelencia</span></h1>
+                <p class="hero-subtitle">Formamos líderes educativos capaces de transformar instituciones mediante la aplicación estratégica de inteligencia artificial generativa.</p>
+            </div>
+
+            <div class="cards-grid-executive">
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h3 class="card-title-executive">Perfil de Ingreso</h3>
+                    <div class="card-content-executive">
+                        <p>El diplomado está diseñado para profesionales de la educación con un claro interés en la transformación digital y la innovación en sus prácticas académicas.</p>
+                        <p style="margin-top: 1rem;"><strong>Requisitos:</strong> Conocimientos básicos de informática y experiencia de uso de IAGen a nivel usuario.</p>
+                    </div>
+                </div>
+
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title-executive">Perfil de Egreso</h3>
+                    <div class="card-content-executive">
+                        <p>Al concluir el diplomado, los participantes contarán con las competencias necesarias para liderar y ejecutar la integración de la Inteligencia Artificial Generativa en el ecosistema educativo, bajo un marco ético, pedagógico y estratégico.</p>
+                        
+                        <div class="accordion-executive">
+                            <div class="accordion-item-executive">
+                                <div class="accordion-header-executive">
+                                    <div class="accordion-title-executive">Diseño de Estrategias Innovadoras con IAGen</div>
+                                    <div class="accordion-indicator-executive">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="accordion-content-executive">
+                                    <div class="accordion-text-executive">
+                                        Desarrollo de recursos y estrategias de evaluación innovadoras mediante la aplicación tecnopedagógica de la IAGen, para potenciar experiencias de aprendizaje significativo.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item-executive">
+                                <div class="accordion-header-executive">
+                                    <div class="accordion-title-executive">Ingeniería de Prompts Avanzada</div>
+                                    <div class="accordion-indicator-executive">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="accordion-content-executive">
+                                    <div class="accordion-text-executive">
+                                        Dominio de la ingeniería de prompts avanzada para la creación, adaptación y personalización de contenidos y soluciones educativas.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item-executive">
+                                <div class="accordion-header-executive">
+                                    <div class="accordion-title-executive">Desarrollo de Agentes Educativos</div>
+                                    <div class="accordion-indicator-executive">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="accordion-content-executive">
+                                    <div class="accordion-text-executive">
+                                        Creación, configuración y entrenamiento de agentes educativos de IAGen especializados que respondan a necesidades pedagógicas específicas.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item-executive">
+                                <div class="accordion-header-executive">
+                                    <div class="accordion-title-executive">Análisis de Datos Educativos</div>
+                                    <div class="accordion-indicator-executive">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="accordion-content-executive">
+                                    <div class="accordion-text-executive">
+                                        Interpretación y aplicación de insights derivados del Learning Analytics e inteligencia artificial generativa para la mejora de procesos educativos y la toma de decisiones basada en datos.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item-executive">
+                                <div class="accordion-header-executive">
+                                    <div class="accordion-title-executive">Liderazgo en Innovación Institucional</div>
+                                    <div class="accordion-indicator-executive">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="accordion-content-executive">
+                                    <div class="accordion-text-executive">
+                                        Liderar la formulación de estrategias y políticas institucionales para la adopción segura, crítica y efectiva de la IAGen, promoviendo una cultura de innovación continua.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology" class="section-executive">
+            <div class="hero-executive">
+                <h1 class="hero-title">Metodología <span>Ejecutiva</span></h1>
+                <p class="hero-subtitle">Un enfoque blended learning diseñado para profesionales de alto rendimiento.</p>
+            </div>
+
+            <div class="cards-grid-executive">
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title-executive">Trabajo Asincrónico</h3>
+                    <div class="card-content-executive">
+                        <p>Actividades en el LMS, foros de discusión ejecutiva, ejercicios prácticos con IAGen. Los participantes pueden avanzar a su propio ritmo dentro de los plazos establecidos, con flexibilidad horaria total.</p>
+                    </div>
+                </div>
+
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="card-title-executive">Sesiones Síncronas</h3>
+                    <div class="card-content-executive">
+                        <p>Sesiones virtuales en vivo con expertos, talleres prácticos, retroalimentación colaborativa. Espacios para resolver dudas estratégicas e intercambiar experiencias en tiempo real.</p>
+                    </div>
+                </div>
+
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title-executive">Seguimiento Ejecutivo</h3>
+                    <div class="card-content-executive">
+                        <p>Actividades formativas y proyectos modulares que permiten evaluar el progreso de manera constante a lo largo del diplomado, con retroalimentación personalizada de alto nivel.</p>
+                    </div>
+                </div>
+
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="card-title-executive">Acreditación</h3>
+                    <div class="card-content-executive">
+                        <p><strong>Por módulo:</strong> Entrega satisfactoria del 90% de las actividades y proyecto final correspondiente.</p>
+                        <p style="margin-top: 1rem;"><strong>Diploma Final:</strong> Asistencia mínima del 80% en las 6 sesiones síncronas y acreditación total de módulos.</p>
+                    </div>
+                </div>
+
+                <div class="card-executive">
+                    <div class="card-icon-executive">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="card-title-executive">Certificación</h3>
+                    <div class="card-content-executive">
+                        <p><strong>Constancias Modulares:</strong> Se otorgarán al acreditar individualmente cada uno de los 6 módulos:</p>
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-light); text-align: left;">
+                            <li>Módulos 1, 2, 4, 5 y 6: 20 horas cada uno</li>
+                            <li>Módulo 3: 30 horas</li>
+                        </ul>
+                        <p><strong>Diploma Final Ejecutivo:</strong> Se expedirá al concluir y acreditar la totalidad de los módulos del diplomado, con un total de 130 horas de formación especializada.</p>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--uqr-green); text-align: justify;">Reconocimiento oficial de la Universidad Autónoma del Estado de Quintana Roo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="instructors" class="section-executive">
+            <div class="hero-executive">
+                <h1 class="hero-title">Equipo <span>Académico</span></h1>
+                <p class="hero-subtitle">Líderes en inteligencia artificial generativa educativa con trayectoria comprobada en transformación digital.</p>
+            </div>
+
+            <div class="instructors-grid-executive">
+                <div class="instructor-card-executive" data-instructor="4">
+                    <div class="instructor-image-executive">
+                        <img src="https://i.ibb.co/xqkQX7Bx/Kenia-Viridiana-2.png" alt="Mtra. Kenia Viridiana Ocampo Bera">
+                    </div>
+                    <span class="instructor-module-executive">Módulo 1: Fundamentos y Ética de la IAGen</span>
+                    <h3 class="instructor-name-executive">Mtra. Kenia Viridiana Ocampo Bera</h3>
+                    <div class="instructor-expertise-executive">Especialista en Diseño de Recursos Digitales Educativos con IAGen</div>
+                    <p class="instructor-bio-executive">Licenciada en Ciencias de la Educación y candidata a Maestra en Tecnologías para el Aprendizaje.</p>
+                </div>
+
+                <div class="instructor-card-executive" data-instructor="5">
+                    <div class="instructor-image-executive">
+                        <img src="https://i.ibb.co/FkJNmnGN/Selene2.jpg" alt="Mtra. Selene Jiménez Penago">
+                    </div>
+                    <span class="instructor-module-executive">Módulo 2: Metodologías de Prompts</span>
+                    <h3 class="instructor-name-executive">Mtra. Selene Jiménez Penago</h3>
+                    <div class="instructor-expertise-executive">Especialista en Diseño de Recursos Digitales Educativos con IAGen</div>
+                    <p class="instructor-bio-executive">Licenciada en Ciencias de la Educación y Maestra en Educación con énfasis en tecnología educativa por la UQRoo.</p>
+                </div>
+
+                <div class="instructor-card-executive" data-instructor="3">
+                    <div class="instructor-image-executive">
+                        <img src="https://i.ibb.co/wrY8Hk83/Priscila2.png" alt="Mtra. Priscila Abigail Hernández Briceño">
+                    </div>
+                    <span class="instructor-module-executive">Módulo 3: Creación de Recursos Digitales Educativos</span>
+                    <h3 class="instructor-name-executive">Mtra. Priscila Abigail Hernández Briceño</h3>
+                    <div class="instructor-expertise-executive">Especialista en Diseño de Recursos Digitales Educativos con IAGen</div>
+                    <p class="instructor-bio-executive">Licenciada en Tecnología Educativa y Maestra en Educación con énfasis en tecnología educativa por la UQRoo.</p>
+                </div>
+
+                <div class="instructor-card-executive" data-instructor="2">
+                    <div class="instructor-image-executive">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face&auto=format" alt="Mtro. Martín Sánchez Islas">
+                    </div>
+                    <span class="instructor-module-executive">Módulo 4: Agentes Educativos y Chatbots</span>
+                    <h3 class="instructor-name-executive">Mtro. Martín Sánchez Islas</h3>
+                    <div class="instructor-expertise-executive">Especialista en Desarrollo de Agentes Educativos con IAGen</div>
+                    <p class="instructor-bio-executive">Pionero en el desarrollo de agentes educativos inteligentes con más de 7 años de experiencia.</p>
+                </div>
+
+                <div class="instructor-card-executive" data-instructor="1">
+                    <div class="instructor-image-executive">
+                        <img src="https://i.ibb.co/rRPzSBPp/Alex2.jpg" alt="Lic. Alejandro Ventura Castellanos">
+                    </div>
+                    <span class="instructor-module-executive">Módulo 5: Protección de Datos, Evaluación y Analítica con IAGen</span>
+                    <h3 class="instructor-name-executive">Lic. Alejandro Ventura Castellanos</h3>
+                    <div class="instructor-expertise-executive">Especialista en IAGen y Learning Analytics</div>
+                    <p class="instructor-bio-executive">Especialista con más de 10 años de experiencia en la implementación de sistemas de información.</p>
+                </div>
+
+                <div class="instructor-card-executive" data-instructor="6">
+                    <div class="instructor-image-executive">
+                        <img src="https://images.unsplash.com/photo-1547425260-76bc04351e1b?w=300&h=300&fit=crop&crop=face&auto=format" alt="Mtro. Jonathan Contreras Cabrera">
+                    </div>
+                    <span class="instructor-module-executive">Módulo 6: Taller de Proyectos Inclusivos, Sostenibles y Éticos con IAGen</span>
+                    <h3 class="instructor-name-executive">Mtro. Jonathan Contreras Cabrera</h3>
+                    <div class="instructor-expertise-executive">Especialista en Diseño de Recursos Educativos Digitales con IAGen</div>
+                    <p class="instructor-bio-executive">Experto en diseño curricular estratégico y la integración de modelos innovadores.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="modules" class="section-executive">
+            <div class="hero-executive">
+                <h1 class="hero-title">Estructura <span>Modular</span></h1>
+                <p class="hero-subtitle">Seis módulos especializados que cubren desde fundamentos hasta aplicaciones avanzadas de IAGen en educación.</p>
+            </div>
+
+            <div class="modules-executive">
+                <div class="modules-nav-executive">
+                    <button class="module-nav-executive active" data-module="mod1">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>Módulo 1</span>
+                    </button>
+                    <button class="module-nav-executive" data-module="mod2">
+                        <i class="fas fa-comments"></i>
+                        <span>Módulo 2</span>
+                    </button>
+                    <button class="module-nav-executive" data-module="mod3">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <span>Módulo 3</span>
+                    </button>
+                    <button class="module-nav-executive" data-module="mod4">
+                        <i class="fas fa-robot"></i>
+                        <span>Módulo 4</span>
+                    </button>
+                    <button class="module-nav-executive" data-module="mod5">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Módulo 5</span>
+                    </button>
+                    <button class="module-nav-executive" data-module="mod6">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Módulo 6</span>
+                    </button>
+                </div>
+
+                <div id="mod1" class="module-content-executive active">
+                    <div class="module-header-executive">
+                        <i class="fas fa-balance-scale"></i>
+                        <h1 class="module-title-executive">Módulo 1: Fundamentos y Ética de la IAGen</h1>
+                    </div>
+                    <p class="module-description-executive">Establece la base conceptual y marco ético para el uso crítico y responsable de la IAGen en educación.</p>
+                    
+                    <div class="module-grid-executive">
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-clock"></i> Duración</h3>
+                            <p class="module-info-content-executive">20 horas</p>
+                        </div>
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-bullseye"></i> Competencias</h3>
+                            <p class="module-info-content-executive">Analiza críticamente los fundamentos conceptuales y aplica el marco ético de la IAGen para la toma de decisiones informadas en contextos educativos.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--executive-gray); text-align: left;">Contenidos Clave:</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Introducción a la IAGen</h4>
+                            <p class="feature-description-executive">Historia de la IAGen y evolución a los Modelos de Lenguaje de Gran Tamaño (LLMs). Conceptos clave: Machine Learning, Deep Learning, y modelos fundacionales.</p>
+                        </div>
+                        
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Aplicaciones de la IAGen en Educación</h4>
+                            <p class="feature-description-executive">Taxonomía de usos: IAGen como asistente del docente e IAGen como facilitador del aprendizaje. Tendencias en Educación Superior.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Ética y Responsabilidad</h4>
+                            <p class="feature-description-executive">Sesgos algorítmicos e implicaciones para la equidad e inclusión. Privacidad y protección de datos.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Integridad Académica y Legalidad</h4>
+                            <p class="feature-description-executive">Implicaciones de los derechos de autor y la propiedad intelectual. Políticas institucionales para el uso de la IAGen.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin: 3rem 0 1.5rem 0; color: var(--executive-gray); text-align: left;">Evidencias de Aprendizaje</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-green);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Directivo</h4>
+                            <p class="feature-description-executive">
+                                <strong>Política Institucional de uso de IAGen</strong><br>
+                                Documento formal que establezca lineamientos, permisos, restricciones y protocolos éticos para el uso de IAGen en la institución. Incluye protocolos para protección de datos, derechos de autor y prevención de sesgos algorítmicos.
+                            </p>
+                        </div>
+
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-gold);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Docente</h4>
+                            <p class="feature-description-executive">
+                                <strong>Análisis Crítico de Casos de Uso de IAGen</strong><br>
+                                Portfolio con evaluación ética de 3 herramientas de IAGen educativas, identificando potenciales sesgos y implicaciones para la equidad. Incluye propuesta de aplicación en su contexto docente específico.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mod2" class="module-content-executive">
+                    <div class="module-header-executive">
+                        <i class="fas fa-comments"></i>
+                        <h1 class="module-title-executive">Módulo 2: Metodologías de Prompts</h1>
+                    </div>
+                    <p class="module-description-executive">Desarrollo de las habilidades avanzadas de comunicación con la IAGen para obtener resultados pedagógicamente relevantes e inclusivos.</p>
+                    
+                    <div class="module-grid-executive">
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-clock"></i> Duración</h3>
+                            <p class="module-info-content-executive">20 horas</p>
+                        </div>
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-bullseye"></i> Competencias</h3>
+                            <p class="module-info-content-executive">Aplica la Ingeniería de Prompts avanzada para la creación, adaptación y personalización de contenidos y soluciones educativas inclusivas y accesibles.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--executive-gray); text-align: left;">Contenidos Clave:</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Conceptos de Prompt Engineering</h4>
+                            <p class="feature-description-executive">Estructura de un prompt efectivo. Roles y contexto. Parámetros avanzados (temperatura, top_k).</p>
+                        </div>
+                        
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-pen-nib"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Técnicas de Prompts Educativos</h4>
+                            <p class="feature-description-executive">Zero-Shot, Few-Shot, Chain-of-Thought (CoT) y Tree-of-Thought (ToT) aplicados a la didáctica.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Prompts para Diferenciación e Inclusión</h4>
+                            <p class="feature-description-executive">Adaptación de contenidos y actividades para distintos niveles y estilos de aprendizaje (Diferenciación curricular).</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Optimización y Curación de Prompts</h4>
+                            <p class="feature-description-executive">Pruebas y refinamiento de prompts. Creación de plantillas reutilizables (templates) para la práctica docente. Evaluación de sesgos y accesibilidad.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin: 3rem 0 1.5rem 0; color: var(--executive-gray); text-align: left;">Evidencias de Aprendizaje</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-green);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Directivo</h4>
+                            <p class="feature-description-executive">
+                                <strong>Estrategias de Prompting para Políticas Inclusivas</strong><br>
+                                Diseño de prompts para políticas institucionales inclusivas, comunicados accesibles y planes de diversidad e inclusión que respondan a las necesidades de toda la comunidad educativa.
+                            </p>
+                        </div>
+
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-gold);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Docente</h4>
+                            <p class="feature-description-executive">
+                                <strong>Técnicas de Prompting para Educación Inclusiva</strong><br>
+                                Desarrollo de prompts para crear materiales adaptados a necesidades educativas especiales, estilos de aprendizaje diversos y contextos culturales específicos del aula.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mod3" class="module-content-executive">
+                    <div class="module-header-executive">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <h1 class="module-title-executive">Módulo 3: Creación de Recursos Digitales Educativos</h1>
+                    </div>
+                    <p class="module-description-executive">Diseño y desarrollo de contenido multimedia y objetos de aprendizaje innovadores mediante la IAGen.</p>
+                    
+                    <div class="module-grid-executive">
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-clock"></i> Duración</h3>
+                            <p class="module-info-content-executive">30 horas</p>
+                        </div>
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-bullseye"></i> Competencias</h3>
+                            <p class="module-info-content-executive">Diseña y desarrolla recursos y estrategias de evaluación innovadoras mediante la aplicación tecnopedagógica de la IAGen.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--executive-gray); text-align: left;">Contenidos Clave:</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Generación de Imágenes y Diseño</h4>
+                            <p class="feature-description-executive">Uso de IAGen para crear ilustraciones didácticas, infografías y material visual atractivo.</p>
+                        </div>
+                        
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Creación de Contenido Multimedia</h4>
+                            <p class="feature-description-executive">Generación de videos explicativos, audio-libros y presentaciones interactivas con IAGen.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-pencil-ruler"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Diseño Instruccional Asistido</h4>
+                            <p class="feature-description-executive">Generación de objetivos, actividades, rúbricas y planes de clase basados en enfoques por competencias. (ADDIE)</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-cubes"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Objetos de Aprendizaje Inteligentes</h4>
+                            <p class="feature-description-executive">Uso de plataformas Low-Code/No-Code con IAGen para crear simulaciones y ejercicios de práctica automatizados.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin: 3rem 0 1.5rem 0; color: var(--executive-gray); text-align: left;">Evidencias de Aprendizaje</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-green);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Directivo</h4>
+                            <p class="feature-description-executive">
+                                <strong>Plan de Capacitación en Recursos Digitales con IAGen</strong><br>
+                                Diseño de programa de formación para docentes sobre creación de recursos con herramientas de IAGen. Incluye roadmap de implementación y métricas de evaluación.
+                            </p>
+                        </div>
+
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-gold);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Docente</h4>
+                            <p class="feature-description-executive">
+                                <strong>Portafolio de Recursos Educativos Generados con IAGen</strong><br>
+                                Colección de al menos 5 recursos creados (infografías, videos, simulaciones) usando diferentes herramientas de IAGen. Incluye reflexión sobre el proceso de diseño y adecuación pedagógica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mod4" class="module-content-executive">
+                    <div class="module-header-executive">
+                        <i class="fas fa-robot"></i>
+                        <h1 class="module-title-executive">Módulo 4: Agentes Educativos y Chatbots</h1>
+                    </div>
+                    <p class="module-description-executive">Desarrollo de asistentes virtuales y chatbots especializados para el apoyo tutorial y la retroalimentación.</p>
+                    
+                    <div class="module-grid-executive">
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-clock"></i> Duración</h3>
+                            <p class="module-info-content-executive">20 horas</p>
+                        </div>
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-bullseye"></i> Competencias</h3>
+                            <p class="module-info-content-executive">Crea, configura y entrena agentes educativos de IAGen especializados que respondan a necesidades pedagógicas específicas.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--executive-gray); text-align: left;">Contenidos Clave:</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Fundamentos de IAGen Conversacional</h4>
+                            <p class="feature-description-executive">Modelos de Procesamiento de Lenguaje Natural (NLP) aplicados a la educación. Diferencias entre chatbots y Agentes Educativos Inteligentes (AEI).</p>
+                        </div>
+                        
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Entrenamiento de Agentes Educativos</h4>
+                            <p class="feature-description-executive">Configuración de base de conocimientos (RAG). Definición de rol, personalidad y tono pedagógico del agente.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Integración y Casos de Uso</h4>
+                            <p class="feature-description-executive">Agentes para tutoría personalizada, soporte en foros de discusión y resolución de dudas administrativas o conceptuales.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Seguridad y Pruebas del Agente</h4>
+                            <p class="feature-description-executive">Mitigación de sesgos y alucinaciones. Evaluación de la precisión y utilidad pedagógica de las respuestas.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin: 3rem 0 1.5rem 0; color: var(--executive-gray); text-align: left;">Evidencias de Aprendizaje</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-green);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Directivo</h4>
+                            <p class="feature-description-executive">
+                                <strong>Prototipo de Agente Virtual Institucional</strong><br>
+                                Agente conversacional entrenado para responder dudas frecuentes de estudiantes sobre trámites, servicios y procedimientos académicos. Incluye documentación técnica y plan de escalamiento.
+                            </p>
+                        </div>
+
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-gold);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Docente</h4>
+                            <p class="feature-description-executive">
+                                <strong>Tutor Virtual Especializado en Asignatura</strong><br>
+                                Agente educativo configurado para apoyar en temas específicos de su materia, con base de conocimientos curricular. Incluye casos de uso y evaluación de efectividad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mod5" class="module-content-executive">
+                    <div class="module-header-executive">
+                        <i class="fas fa-chart-line"></i>
+                        <h1 class="module-title-executive">Módulo 5: Protección de Datos, Evaluación y Analítica con IAGen</h1>
+                    </div>
+                    <p class="module-description-executive">Aplicación de la IAGen para la evaluación formativa, análisis de datos educativos bajo marcos de protección de datos y ética.</p>
+                    
+                    <div class="module-grid-executive">
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-clock"></i> Duración</h3>
+                            <p class="module-info-content-executive">20 horas</p>
+                        </div>
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-bullseye"></i> Competencias</h3>
+                            <p class="module-info-content-executive">Interpreta y aplica insights derivados del Learning Analytics e IAGen para la mejora de procesos educativos y la toma de decisiones basada en datos, bajo marcos éticos y de protección de privacidad.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--executive-gray); text-align: left;">Contenidos Clave:</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Evaluación Automatizada con Protección de Datos</h4>
+                            <p class="feature-description-executive">Generación y calificación de instrumentos evaluativos con IAGen. Protocolos éticos para el manejo de resultados académicos sensibles y estrategias de privacidad en retroalimentación automatizada.</p>
+                        </div>
+                        
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Learning Analytics y Gobernanza de Datos</h4>
+                            <p class="feature-description-executive">Recolección y análisis de datos de interacción en plataformas educativas. Implementación de marcos de gobernanza, consentimiento informado y políticas de retención/eliminación de datos estudiantiles.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Identificación de Riesgos con Enfoque Ético</h4>
+                            <p class="feature-description-executive">Modelos predictivos para detección temprana de estudiantes en riesgo. Protocolos éticos de intervención, protección de datos sensibles y prevención de estigmatización en análisis predictivos.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Herramientas de Análisis y Seguridad de Datos</h4>
+                            <p class="feature-description-executive">Uso de IAGen para análisis de datos cualitativos con enfoque en privacidad. Técnicas de anonimización, encriptación y cumplimiento normativo en la generación de informes ejecutivos y dashboards.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin: 3rem 0 1.5rem 0; color: var(--executive-gray); text-align: left;">Evidencias de Aprendizaje</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-green);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Directivo</h4>
+                            <p class="feature-description-executive">
+                                <strong>Política Integral de Protección de Datos y Analytics Institucional</strong><br>
+                                Documento normativo que establece los protocolos para el manejo ético de datos educativos sensibles, incluyendo marcos de gobernanza, consentimiento informado, políticas de retención/eliminación de datos, y protocolos de seguridad para dashboards de analytics institucional, asegurando el cumplimiento de la legislación aplicable en protección de datos personales.
+                            </p>
+                        </div>
+
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-gold);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Docente</h4>
+                            <p class="feature-description-executive">
+                                <strong>Sistema de Evaluación Automatizada con Protocolos de Privacidad</strong><br>
+                                Instrumento digital de evaluación diseñado con IAGen que incluya: herramienta digital de evaluación, rúbrica de calificación, y protocolos específicos para el manejo ético de resultados académicos en dashboards, consentimiento estudiantil, anonimización de datos en retroalimentación, y medidas de seguridad para protección de información sensible del estudiantado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mod6" class="module-content-executive">
+                    <div class="module-header-executive">
+                        <i class="fas fa-lightbulb"></i>
+                        <h1 class="module-title-executive">Módulo 6: Taller de Proyectos Inclusivos, Sostenibles y Éticos con IAGen</h1>
+                    </div>
+                    <p class="module-description-executive">Integración de competencias en el diseño e implementación de proyectos educativos con IAGen que incorpore principios de inclusión, sostenibilidad institucional y ética en la visualización y el manejo de datos, aplicados a contextos educativos reales.</p>
+                    
+                    <div class="module-grid-executive">
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-clock"></i> Duración</h3>
+                            <p class="module-info-content-executive">20 horas</p>
+                        </div>
+                        <div class="module-info-executive">
+                            <h3 class="module-info-title-executive"><i class="fas fa-bullseye"></i> Competencias</h3>
+                            <p class="module-info-content-executive">Consolida las habilidades digitales adquiridas en el diseño, desarrollo, implementación y visualización protegida de datos en un proyecto de innovación educativa inclusivo, sostenible y ético con IAGen.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--executive-gray); text-align: left;">Contenidos Clave:</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Metodologías de Innovación Educativa y Diseño Inclusivo</h4>
+                            <p class="feature-description-executive">Aplicación del Design Thinking e Investigación-Acción para resolver problemas docentes con IAGen, integrando principios de diseño universal para el aprendizaje (DUA) y estrategias de accesibilidad desde la fase inicial del proyecto.</p>
+                        </div>
+                        
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Planificación y Gestión del Proyecto con Enfoque Ético</h4>
+                            <p class="feature-description-executive">Definición del problema de aprendizaje y establecimiento de objetivos SMART, incorporando protocolos de protección de datos, consentimiento informado y evaluación de impacto ético en el plan de implementación.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Taller de Prototipado y Refinamiento Accesible</h4>
+                            <p class="feature-description-executive">Desarrollo del prototipo del Agente Educativo IAGen, realizando pruebas de usabilidad con usuarios diversos y validaciones de accesibilidad, incorporando retroalimentación para el refinamiento inclusivo.</p>
+                        </div>
+
+                        <div class="feature-executive">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Presentación y Sostenibilidad</h4>
+                            <p class="feature-description-executive">Elaboración del Informe Ejecutivo Final, dashboards de visualización de datos y presentación del proyecto, analizando su escalabilidad, viabilidad institucional a largo plazo, estrategias de mantenimiento del agente educativo y métricas de impacto continuo.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="font-size: 1.3rem; margin: 3rem 0 1.5rem 0; color: var(--executive-gray); text-align: left;">Evidencias de Aprendizaje</h3>
+                    <div class="module-features-executive">
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-green);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Directivo</h4>
+                            <p class="feature-description-executive">
+                                <strong>Plan Estratégico de Transformación Digital con IAGen Inclusivo y Ético</strong><br>
+                                Proyecto integral para la implementación escalonada de soluciones de IAGen en la institución que incorpore políticas de inclusión digital, protocolos de protección de datos y dashboards de monitoreo de impacto, incluyendo análisis de viabilidad, cronograma y métricas de éxito con enfoque en equidad y sostenibilidad.
+                            </p>
+                        </div>
+
+                        <div class="feature-executive" style="border-left: 4px solid var(--uqr-gold);">
+                            <div class="feature-icon-executive">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 class="feature-title-executive">Personal Docente</h4>
+                            <p class="feature-description-executive">
+                                <strong>Proyecto de Innovación en el Aula con Agente Educativo Inclusivo</strong><br>
+                                Implementación completa de un agente educativo en su práctica docente, desde diseño hasta evaluación de impacto, que incluya criterios de accesibilidad, protocolos éticos de manejo de datos estudiantiles y sistema de métricas inclusivas, con evidencia de aplicación, resultados y plan de mejora continua.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-executive" id="instructorModal">
+        <div class="modal-content-executive">
+            <button class="modal-close-executive" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header-executive">
+                <h2 class="modal-title-executive" id="modalInstructorName"></h2>
+                <p class="modal-subtitle-executive" id="modalInstructorExpertise"></p>
+                <div class="modal-module-executive" id="modalInstructorModule"></div>
+            </div>
+            <div class="modal-bio-executive" id="modalInstructorBio">
+            </div>
+        </div>
+    </div>
+
+    <footer class="executive-footer">
+        <div class="footer-content-executive">
+            <div class="footer-institutional">Universidad Autónoma del Estado de Quintana Roo</div>
+            <div class="footer-departments">Dirección General de Desarrollo Académico</div>
+            <div class="footer-departments">Departamento de Innovación y Multimedia Educativa</div>
+            <div class="footer-rights">Todos los derechos reservados. 2026 ©</div>
+        </div>
+    </footer>
+
+    <script>
+        // Datos completos de instructores actualizados con nombres de módulos completos
+        const instructorsData = {
+            '1': {
+                name: 'Lic. Alejandro Ventura Castellanos',
+                module: 'Módulo 5: Protección de Datos, Evaluación y Analítica con IAGen',
+                expertise: 'Especialista en IAGen y Learning Analytics',
+                bio: `Especialista con más de 10 años de experiencia en la implementación de sistemas de información, análisis de datos educativos y evaluación inteligente. Ha liderado proyectos de transformación digital en instituciones educativas de prestigio, integrando soluciones de Learning Analytics con plataformas Low-Code y soluciones digitales prácticas desarrolladas con modelos de Inteligencia Artificial Generativa (IAGen) para personalizar el aprendizaje y automatizar procesos.
+
+Como instructor especializado, diseña e imparte programas de capacitación en IAGen aplicada a la educación, formando a profesionales en el uso ético, crítico e innovador de estas herramientas de vanguardia. Su enfoque combina la expertise técnica con una profunda comprensión de las necesidades pedagógicas institucionales.`
+            },
+            '2': {
+                name: 'Mtro. Martín Sánchez Islas',
+                module: 'Módulo 4: Agentes Educativos y Chatbots',
+                expertise: 'Especialista en el desarrollo de Agentes Educativos con IAGen',
+                bio: `Pionero en el desarrollo de agentes educativos inteligentes con más de 7 años de experiencia en el diseño e implementación de sistemas de tutoría inteligente. Ha creado soluciones de IAGen conversacional para más de 15 instituciones educativas, optimizando procesos de enseñanza-aprendizaje mediante la personalización educativa.
+
+Especializado en plataformas low-code/no-code, ha capacitado a cientos de educadores en la creación de sus propios asistentes virtuales educativos, democratizando el acceso a tecnologías avanzadas de inteligencia artificial generativa. Su enfoque pedagógico combina la innovación tecnológica con metodologías educativas probadas, asegurando que cada solución desarrollada responda a necesidades reales del contexto educativo.`
+            },
+            '3': {
+                name: 'Mtra. Priscila Abigail Hernández Briceño',
+                module: 'Módulo 3: Creación de Recursos Digitales Educativos',
+                expertise: 'Especialista en el Diseño de Recursos Digitales Educativos con IAGen',
+                bio: `Licenciada en Tecnología Educativa por la Universidad Interamericana para el Desarrollo (UNID) y Maestra en Educación con énfasis en tecnología educativa por la Universidad Autónoma del Estado de Quintana Roo (UQRoo). Cuenta con 14 años de experiencia Docente en la modalidad Escolar y tres años como Diseñadora Instruccional.
+
+Se ha capacitado en diversos cursos sobre Metodología de Prompts Educativos, Diseño Instruccional con IAGen, Innovación Educativa con Inteligencia Artificial Generativa y el uso de herramientas digitales con IAGen. Diseño y guio en colaboración el curso "Aplicaciones de IAGen en la Creación de Contenido para la Práctica Docente" para la Comisión Estatal para la Planeación de la Educación Superior.
+
+Su expertise abarca la integración de IAGen en el diseño curricular y la creación de experiencias de aprendizaje innovadoras que potencian el engagement estudiantil.`
+            },
+            '4': {
+                name: 'Mtra. Kenia Viridiana Ocampo Bera',
+                module: 'Módulo 1: Fundamentos y Ética de la IAGen',
+                expertise: 'Especialista en el Diseño de Recursos Digitales Educativos con IAGen',
+                bio: `Licenciada en Ciencias de la Educación por la Universidad Autónoma de Morelos y actualmente cursa la Maestría en Tecnologías para el Aprendizaje en la Universidad de Guadalajara. Cuenta con una sólida formación en innovación educativa y en la integración de tecnologías en los procesos de enseñanza-aprendizaje.
+
+Ha cursado el Diplomado en Prácticas Educativas con Inteligencia Artificial Generativa por la Universidad de Colima (2024), el Diplomado en Herramientas Básicas de Investigación en Educación (CIIDU-UAEM, 2019) y el Curso Avanzado de Lengua de Señas Mexicana (2023). Especialista en el diseño instruccional de asignaturas virtuales e híbridas, donde crea objetos de aprendizaje para licenciaturas y capacitación docente.
+
+Además, ha sido facilitadora virtual y docente frente a grupo, destacando por su compromiso con la mejora de las prácticas educativas a través del uso de tecnologías emergentes. Su enfoque prioriza la accesibilidad y la inclusión en el diseño de recursos digitales.`
+            },
+            '5': {
+                name: 'Mtra. Selene Jiménez Penago',
+                module: 'Módulo 2: Metodologías de Prompts',
+                expertise: 'Especialista en el Diseño de Recursos Digitales Educativos con IAGen',
+                bio: `Licenciada en Ciencias de la Educación por la Universidad Juárez Autónoma de Tabasco (UJAT) y Maestra en Educación con énfasis en tecnología educativa por la Universidad Autónoma del Estado de Quintana Roo (UQRoo). Con experiencia docente en diferentes niveles educativos: básica, media superior y superior.
+
+Cuenta con 5 años de experiencia como Diseñadora Instruccional en empresas privadas y públicas entre las que destacan la Universidad Veracruzana (UV). Actualmente forma parte del equipo de DI en el Departamento de Innovación y Multimedia Educativa (DIME) de la UQRoo campus Chetumal.
+
+Su experiencia abarca el diseño de materiales educativos digitales, la implementación de estrategias pedagógicas innovadoras y la integración de tecnologías emergentes en procesos de enseñanza-aprendizaje. Especialista en el uso de IAGen para la creación de contenidos educativos personalizados y en el desarrollo de estrategias de evaluación innovadoras.`
+            },
+            '6': {
+                name: 'Mtro. Jonathan Contreras Cabrera',
+                module: 'Módulo 6: Taller de Proyectos Inclusivos, Sostenibles y Éticos con IAGen',
+                expertise: 'Especialista en Diseño de Recursos Educativos Digitales con IAG',
+                bio: `Especialista en tecnología educativa, como el diseño instruccional, la gamificación para el aprendizaje escolar y el uso de la inteligencia artificial generativa para el diseño de recursos educativos digitales. Cuenta con más de 5 años de experiencia en el diseño e implementación de recursos educativos digitales para programas de formación en modalidad virtual.
+
+Es maestro en Educación, con énfasis en Tecnología Educativa, por la Universidad Autónoma del Estado de Quintana Roo y licenciado en Psicología por la Universidad de Valladolid Yucatán. Ha colaborado como capacitador docente en temas relacionados con la tecnología educativa en instituciones de educación media superior y superior.
+
+Actualmente se desempeña como analista en el Departamento de Innovación y Multimedia Educativa de la Universidad Autónoma del Estado de Quintana Roo en donde realiza funciones de asesoramiento, diseño y producción de materiales multimedia educativos con apoyo de inteligencia artificial generativa, así como el montaje y configuración de cursos en la plataforma tecnológica educativa institucional (Moodle).`
+            }
+        };
+
+        // Navigation System
+        const navItems = document.querySelectorAll('.nav-item-executive');
+        const sections = document.querySelectorAll('.section-executive');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                sections.forEach(section => section.classList.remove('active'));
+                const sectionId = item.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Accordion System
+        const accordionItems = document.querySelectorAll('.accordion-item-executive');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header-executive');
+            
+            header.addEventListener('click', () => {
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        // Modules Navigation
+        const moduleNavs = document.querySelectorAll('.module-nav-executive');
+        const moduleContents = document.querySelectorAll('.module-content-executive');
+        
+        moduleNavs.forEach(button => {
+            button.addEventListener('click', () => {
+                moduleNavs.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                moduleContents.forEach(content => content.classList.remove('active'));
+                const moduleId = button.getAttribute('data-module');
+                document.getElementById(moduleId).classList.add('active');
+            });
+        });
+
+        // Modal System for Instructors
+        const instructorCards = document.querySelectorAll('.instructor-card-executive');
+        const modal = document.getElementById('instructorModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalName = document.getElementById('modalInstructorName');
+        const modalExpertise = document.getElementById('modalInstructorExpertise');
+        const modalModule = document.getElementById('modalInstructorModule');
+        const modalBio = document.getElementById('modalInstructorBio');
+
+        instructorCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const instructorId = card.getAttribute('data-instructor');
+                const instructor = instructorsData[instructorId];
+                
+                if (instructor) {
+                    modalName.textContent = instructor.name;
+                    modalExpertise.textContent = instructor.expertise;
+                    modalModule.textContent = instructor.module;
+                    modalBio.innerHTML = instructor.bio.split('\n\n').map(paragraph => 
+                        `<p>${paragraph}</p>`
+                    ).join('');
+                    
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Add subtle animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and features for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.card-executive, .feature-executive, .instructor-card-executive');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
