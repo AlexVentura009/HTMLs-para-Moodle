@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Club de IAG - UQROO | Versión Directiva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --verde-uqroo: #00492C;
+            --verde-encabezados-seccion: #00613A;
+            --dorado-uqroo: #AC8400;
+            --verde-claro: #e6f0eb;
+            --dorado-claro: #f5e8c8;
+            --gris-claro: #f8f9fa;
+            --gris-oscuro: #333;
+            --blanco: #fff;
+            --sombra: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--gris-oscuro);
+            background-color: var(--gris-claro);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--verde-uqroo);
+            color: var(--blanco);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-container img {
+            height: 70px;
+            width: auto;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .version-badge {
+            background-color: var(--dorado-uqroo);
+            color: var(--verde-uqroo);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Botón de cambio de versión */
+        .version-switch {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .switch-button {
+            background: linear-gradient(135deg, var(--dorado-uqroo), #d4a500);
+            color: var(--verde-uqroo);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(172, 132, 0, 0.4);
+            transition: all 0.3s;
+        }
+        
+        .switch-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(172, 132, 0, 0.6);
+        }
+        
+        .switch-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Título principal */
+        .main-title {
+            text-align: center;
+            margin: 40px 0;
+            color: var(--verde-uqroo);
+        }
+        
+        .main-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .main-title .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Layout de dos columnas */
+        .content-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+            margin-bottom: 60px;
+            min-height: 800px;
+        }
+        
+        /* Columna izquierda (1/3) - Listado */
+        .content-list-column {
+            flex: 1;
+            background-color: var(--blanco);
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .list-header {
+            background-color: var(--verde-encabezados-seccion);
+            color: var(--blanco);
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .list-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .list-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .content-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        
+        .list-item {
+            padding: 20px 25px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .list-item:hover {
+            background-color: var(--verde-claro);
+        }
+        
+        .list-item.active {
+            background-color: var(--dorado-claro);
+            border-left: 5px solid var(--dorado-uqroo);
+        }
+        
+        .list-item-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--verde-claro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--verde-uqroo);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .list-item.active .list-item-icon {
+            background-color: var(--dorado-uqroo);
+            color: var(--verde-uqroo);
+        }
+        
+        .list-item-content h3 {
+            font-size: 1.2rem;
+            color: var(--verde-uqroo);
+            margin-bottom: 5px;
+        }
+        
+        .list-item.active h3 {
+            color: var(--verde-uqroo);
+            font-weight: bold;
+        }
+        
+        .list-item-content p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        /* Columna derecha (2/3) - Detalles */
+        .content-detail-column {
+            flex: 2;
+            background-color: var(--blanco);
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-header {
+            background-color: var(--verde-encabezados-seccion);
+            color: var(--blanco);
+            padding: 25px;
+        }
+        
+        .detail-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .detail-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .detail-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .detail-section {
+            margin-bottom: 30px;
+        }
+        
+        .detail-section h3 {
+            color: var(--verde-uqroo);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--dorado-claro);
+        }
+        
+        .detail-section p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .detail-section ul, .detail-section ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background-color: var(--verde-claro);
+            border-left: 4px solid var(--dorado-uqroo);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .highlight-box p {
+            font-style: italic;
+            margin-bottom: 0;
+            color: var(--verde-uqroo);
+        }
+        
+        /* Tablas */
+        .resources-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .resources-table th {
+            background-color: var(--verde-uqroo);
+            color: var(--blanco);
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+        }
+        
+        .resources-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .resources-table tr:nth-child(even) {
+            background-color: var(--gris-claro);
+        }
+        
+        /* Fases */
+        .phases-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .phase-card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            box-shadow: var(--sombra);
+            border: 2px solid var(--verde-claro);
+        }
+        
+        .phase-number {
+            display: inline-block;
+            background-color: var(--dorado-uqroo);
+            color: var(--verde-uqroo);
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .phase-card h4 {
+            color: var(--verde-uqroo);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--verde-uqroo);
+            color: var(--blanco);
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-text {
+            max-width: 800px;
+            margin: 20px 0;
+            opacity: 0.9;
+        }
+        
+        .footer-note {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            width: 100%;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .content-layout {
+                flex-direction: column;
+            }
+            
+            .content-list-column, .content-detail-column {
+                width: 100%;
+            }
+            
+            .version-switch {
+                top: 80px;
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .main-title h1 {
+                font-size: 2rem;
+            }
+            
+            .detail-header h2 {
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                text-align: center;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .main-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .version-switch {
+                position: relative;
+                top: 0;
+                right: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin: 20px 0;
+            }
+            
+            .switch-button {
+                width: 100%;
+                max-width: 400px;
+                justify-content: center;
+            }
+            
+            .phase-card {
+                min-width: 100%;
+            }
+            
+            .detail-content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .main-title h1 {
+                font-size: 1.5rem;
+            }
+            
+            .list-header, .detail-header {
+                padding: 20px;
+            }
+            
+            .list-item {
+                padding: 15px 20px;
+            }
+            
+            .resources-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/5mO4dif.png" alt="Logo UQROO">
+                <div class="logo-text">
+                    <h1>Proyecto: Club de Inteligencia Artificial Generativa</h1>
+                    <p>Universidad Autónoma del Estado de Quintana Roo</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <!-- Layout de dos columnas -->
+        <div class="content-layout">
+            <!-- Columna izquierda: Listado de contenido (1/3) -->
+            <div class="content-list-column">
+                <div class="list-header">
+                    <h2>CONTENIDO DEL PROYECTO</h2>
+                    <p>Seleccione un tema para ver detalles</p>
+                </div>
+                
+                <div class="content-list">
+                    <!-- Item 1 -->
+                    <div class="list-item active" onclick="mostrarContenido('objetivo')">
+                        <div class="list-item-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h3>Objetivo General</h3>
+                            <p>Propósito principal del club</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="list-item" onclick="mostrarContenido('justificacion')">
+                        <div class="list-item-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h3>Justificación</h3>
+                            <p>Razones académicas y sociales</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="list-item" onclick="mostrarContenido('perfil')">
+                        <div class="list-item-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h3>Perfil de Integrantes</h3>
+                            <p>¿Para quién está diseñado?</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="list-item" onclick="mostrarContenido('agenda')">
+                        <div class="list-item-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h3>Agenda de Actividades</h3>
+                            <p>Temario completo detallado</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 5 -->
+                    <div class="list-item" onclick="mostrarContenido('recursos')">
+                        <div class="list-item-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h3>Recursos y Logística</h3>
+                            <p>Necesidades para implementación</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 6 -->
+                    <div class="list-item" onclick="mostrarContenido('impacto')">
+                        <div class="list-item-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h3>Impacto Esperado</h3>
+                            <p>Beneficios para la UQROO</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 7 -->
+                    <div class="list-item" onclick="mostrarContenido('ruta')">
+                        <div class="list-item-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h3>Ruta de Crecimiento</h3>
+                            <p>Fases de implementación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna derecha: Detalles del contenido (2/3) -->
+            <div class="content-detail-column">
+                <div class="detail-header">
+                    <h2 id="detail-title">OBJETIVO GENERAL DEL CLUB</h2>
+                    <p id="detail-subtitle">Propósito principal y visión del proyecto</p>
+                </div>
+                
+                <!-- Contenido de detalles -->
+                <div class="detail-content" id="detail-content">
+                    <!-- Contenido del objetivo general -->
+                    <div class="detail-section">
+                        <h3>Declaración del Objetivo</h3>
+                        <p>"Crear un espacio estudiantil inclusivo en la UQRoo para el aprendizaje práctico de herramientas de IA y la experimentación creativa, fundamentado siempre en el uso ético y responsable. Buscamos que las y los estudiantes desarrollen habilidades digitales avanzadas, debatan sobre el impacto social de la tecnología y utilicen la IA como un apoyo para su formación académica sin sustituir el pensamiento crítico ni la honestidad intelectual."</p>
+                        
+                        <div class="highlight-box">
+                            <p><strong>Enfoque principal:</strong> Equilibrio entre innovación tecnológica y valores académicos fundamentales.</p>
+                        </div>
+                        
+                        <h3>Componentes Clave</h3>
+                        <ul>
+                            <li><strong>Espacio inclusivo:</strong> Accesible para todos los estudiantes sin distinción de carrera o nivel de conocimiento.</li>
+                            <li><strong>Aprendizaje práctico:</strong> Enfoque en la aplicación real de herramientas de IA generativa.</li>
+                            <li><strong>Fundamento ético:</strong> Uso responsable como principio rector de todas las actividades.</li>
+                            <li><strong>Desarrollo de habilidades:</strong> Capacitación en competencias digitales avanzadas.</li>
+                            <li><strong>Reflexión crítica:</strong> Espacios para debatir el impacto social de la tecnología.</li>
+                            <li><strong>Complemento académico:</strong> La IA como apoyo, no como sustituto del pensamiento crítico.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="https://i.imgur.com/5mO4dif.png" alt="Logo UQROO">
+            </div>
+            <div class="footer-text">
+                <p><strong>Dirección General de Desarrollo Académico</strong></p>
+                <p>Departamento de Innovación y Multimedia Educativa</p>
+                <p>Universidad Autónoma del Estado de Quintana Roo. Todos los derechos reservados. ©️ 2026.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para manejar el contenido dinámico - VERSIÓN SIMPLIFICADA -->
+    <script>
+        // Función para mostrar contenido - VERSIÓN DIRECTA
+        function mostrarContenido(tipo) {
+            console.log("Mostrando contenido:", tipo);
+            
+            // Primero actualizar el item activo en la lista
+            document.querySelectorAll('.list-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Marcar el item actual como activo
+            event.currentTarget.classList.add('active');
+            
+            // Actualizar el contenido según el tipo seleccionado
+            const detailTitle = document.getElementById('detail-title');
+            const detailSubtitle = document.getElementById('detail-subtitle');
+            const detailContent = document.getElementById('detail-content');
+            
+            switch(tipo) {
+                case 'objetivo':
+                    detailTitle.textContent = "OBJETIVO GENERAL DEL CLUB";
+                    detailSubtitle.textContent = "Propósito principal y visión del proyecto";
+                    detailContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Declaración del Objetivo</h3>
+                            <p>"Crear un espacio estudiantil inclusivo en la UQRoo para el aprendizaje práctico de herramientas de IA y la experimentación creativa, fundamentado siempre en el uso ético y responsable. Buscamos que las y los estudiantes desarrollen habilidades digitales avanzadas, debatan sobre el impacto social de la tecnología y utilicen la IA como un apoyo para su formación académica sin sustituir el pensamiento crítico ni la honestidad intelectual."</p>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Enfoque principal:</strong> Equilibrio entre innovación tecnológica y valores académicos fundamentales.</p>
+                            </div>
+                            
+                            <h3>Componentes Clave</h3>
+                            <ul>
+                                <li><strong>Espacio inclusivo:</strong> Accesible para todos los estudiantes sin distinción de carrera o nivel de conocimiento.</li>
+                                <li><strong>Aprendizaje práctico:</strong> Enfoque en la aplicación real de herramientas de IA generativa.</li>
+                                <li><strong>Fundamento ético:</strong> Uso responsable como principio rector de todas las actividades.</li>
+                                <li><strong>Desarrollo de habilidades:</strong> Capacitación en competencias digitales avanzadas.</li>
+                                <li><strong>Reflexión crítica:</strong> Espacios para debatir el impacto social de la tecnología.</li>
+                                <li><strong>Complemento académico:</strong> La IA como apoyo, no como sustituto del pensamiento crítico.</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'justificacion':
+                    detailTitle.textContent = "JUSTIFICACIÓN DEL PROYECTO";
+                    detailSubtitle.textContent = "Razones académicas y sociales para la creación del club";
+                    detailContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Contexto Actual</h3>
+                            <p>La rápida evolución de la Inteligencia Artificial Generativa está transformando la manera en que aprendemos, trabajamos y nos comunicamos. Para la comunidad estudiantil de la UQRoo, este club no es solo un espacio de tecnología, sino una necesidad académica y social.</p>
+                            
+                            <h3>Razones Fundamentales</h3>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Alfabetización Digital para Todas las Carreras:</strong> La IA ya no es exclusiva de las ingenierías. Estudiantes de todas las licenciaturas necesitan entender estas herramientas para no quedar en desventaja en el mundo profesional actual.</p>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Liderazgo en Ética Universitaria:</strong> Ante el riesgo de un uso inadecuado de la IA (como el plagio o la desinformación), el club servirá como una guía para que el alumnado aprenda a usarla con honestidad, transparencia y pensamiento crítico, protegiendo el prestigio de nuestra universidad.</p>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Cierre de la Brecha Tecnológica:</strong> Queremos asegurar que cualquier estudiante, sin importar su situación económica o conocimientos previos, tenga acceso a conocer y experimentar con las herramientas de IA más innovadoras en un entorno colaborativo.</p>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Innovación con Identidad Local:</strong> El club fomentará que las y los jóvenes utilicen la IA para proponer soluciones creativas a retos específicos de nuestro estado, Quintana Roo, vinculando la tecnología con nuestra realidad regional.</p>
+                            </div>
+                            
+                            <h3>Impacto Inmediato</h3>
+                            <ul>
+                                <li>Preparación de los estudiantes para el mercado laboral actual</li>
+                                <li>Fortalecimiento de la reputación académica de la UQROO</li>
+                                <li>Reducción de la brecha digital entre estudiantes</li>
+                                <li>Aplicación de tecnología a problemas locales específicos</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'perfil':
+                    detailTitle.textContent = "PERFIL DE LAS Y LOS INTEGRANTES";
+                    detailSubtitle.textContent = "Características y alcance del público objetivo";
+                    detailContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Características del Club</h3>
+                            <p>El club es un espacio multidisciplinario. No se requieren conocimientos previos de programación ni equipo especializado. Está diseñado para:</p>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Estudiantes de todas las carreras:</strong> Personas interesadas en saber cómo la IA puede ayudarles en su área específica (ej. creación de materiales visuales, análisis de textos legales o redacción técnica).</p>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Mentes creativas:</strong> Quienes deseen explorar nuevas formas de expresión artística, diseño o escritura digital.</p>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Perfiles curiosos y críticos:</strong> Personas interesadas en la filosofía y la ética detrás de la tecnología que quieran debatir sobre el futuro del trabajo y la sociedad.</p>
+                            </div>
+                            
+                            <h3>Requisitos de Participación</h3>
+                            <ul>
+                                <li><strong>Ningún requisito técnico previo:</strong> No se necesita experiencia en programación o IA</li>
+                                <li><strong>Equipo básico:</strong> Computadora personal o acceso a equipos de cómputo de la universidad</li>
+                                <li><strong>Disponibilidad:</strong> Compromiso de asistir a sesiones semanales o quincenales</li>
+                                <li><strong>Actitud:</strong> Interés genuino en aprender y aplicar IA de forma ética</li>
+                                <li><strong>Matrícula:</strong> Ser estudiante activo de la UQROO en cualquier campus</li>
+                            </ul>
+                            
+                            <h3>Beneficios para los Integrantes</h3>
+                            <ul>
+                                <li>Desarrollo de habilidades digitales avanzadas</li>
+                                <li>Acceso a herramientas y software especializado</li>
+                                <li>Construcción de portafolio con proyectos reales</li>
+                                <li>Networking con compañeros de diferentes carreras</li>
+                                <li>Posible reconocimiento como horas de servicio social</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'agenda':
+                    detailTitle.textContent = "AGENDA DE ACTIVIDADES DEL CLUB";
+                    detailSubtitle.textContent = "Temario completo y actividades programadas";
+                    detailContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Estructura del Programa</h3>
+                            <p>El club se organizará en módulos temáticos que cubren tanto aspectos técnicos como éticos del uso de la inteligencia artificial generativa.</p>
+                            
+                            <h3>Módulo 1: Mastering Prompts - El arte de dirigir a la IA</h3>
+                            <div class="highlight-box">
+                                <p><strong>Optimización de instrucciones:</strong> Aprenderemos a diseñar comandos precisos ("hablarle" a la IA) para obtener resultados profesionales y útiles, evitando respuestas genéricas.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <p><strong>Herramientas aplicadas a tu perfil:</strong> Sesiones prácticas para identificar y dominar plataformas de IA que se conviertan en aliadas estratégicas según cada carrera.</p>
+                            </div>
+                            
+                            <h3>Módulo 2: Laboratorio de Pensamiento Crítico y Verificación</h3>
+                            <div class="highlight-box">
+                                <p><strong>Caza-alucinaciones y Fact-checking:</strong> Entrenaremos el ojo para detectar datos falsos o inventados por los modelos, asegurando que la información utilizada sea siempre veraz.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <p><strong>Análisis de sesgos y ética digital:</strong> Analizaremos cómo los prejuicios afectan los resultados de la IA y cómo podemos usar la tecnología de forma más inclusiva y justa.</p>
+                            </div>
+                            
+                            <h3>Módulo 3: Creative Studio & Prototipado</h3>
+                            <div class="highlight-box">
+                                <p><strong>Challenges Semanales de Creación:</strong> Retos dinámicos de diseño, redacción y contenido multimedia para poner a prueba nuestra imaginación y las capacidades reales de la IA.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <p><strong>Asistente de Código y Web:</strong> Utilizaremos la IA como apoyo para facilitar la escritura de código HTML, permitiendo que cualquier integrante pueda prototipar su propio sitio web sin complicaciones.</p>
+                            </div>
+                            
+                            <h3>Módulo 4: Deep Talks - Ética y Futuro Profesional</h3>
+                            <div class="highlight-box">
+                                <p><strong>Foros de debate y tendencias:</strong> Espacios de charla relajada para analizar el impacto de la IA en el mercado laboral y la sociedad actual.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <p><strong>El Manual de Buenas Prácticas:</strong> Construcción colectiva de una guía ética para el uso responsable de la IA dentro de la universidad, priorizando siempre la honestidad académica.</p>
+                            </div>
+                            
+                            <h3>Módulo 5: Eventos Especiales - Networking e Impacto</h3>
+                            <div class="highlight-box">
+                                <p><strong>Invitados externos:</strong> Charlas breves con profesionales que ya están aplicando la IA en el mundo real para conocer sus experiencias y consejos.</p>
+                            </div>
+                            <div class="highlight-box">
+                                <p><strong>Hackatón Ético:</strong> Un evento intensivo de un día para proponer soluciones creativas a retos de nuestra universidad usando IA de forma responsable y transparente.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'recursos':
+                    detailTitle.textContent = "RECURSOS Y LOGÍSTICA";
+                    detailSubtitle.textContent = "Necesidades para la implementación del proyecto";
+                    detailContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Requisitos para el Arranque del Club</h3>
+                            <p>Para que la comunidad de IA sea un éxito, requerimos de ciertos apoyos básicos por parte de la universidad:</p>
+                            
+                            <h3>Espacio Físico y Conectividad</h3>
+                            <table class="resources-table">
+                                <thead>
+                                    <tr>
+                                        <th>Recurso</th>
+                                        <th>Descripción</th>
+                                        <th>Beneficio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Aula o Laboratorio</strong></td>
+                                        <td>Un salón con proyectores y mesas de trabajo (el Laboratorio de Cómputo de la DCIT sería ideal) para las sesiones semanales.</td>
+                                        <td>Espacio adecuado para actividades prácticas y colaborativas</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Internet de alta velocidad</strong></td>
+                                        <td>Es vital, ya que la mayoría de las herramientas de IA generativa corren en la nube.</td>
+                                        <td>Acceso fluido a herramientas en línea y sesiones sin interrupciones</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <h3>Infraestructura Digital</h3>
+                            <table class="resources-table">
+                                <thead>
+                                    <tr>
+                                        <th>Recurso</th>
+                                        <th>Descripción</th>
+                                        <th>Beneficio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Acceso a Software</strong></td>
+                                        <td>Gestiones para utilizar versiones educativas o gratuitas de herramientas populares (como ChatGPT, Claude, Midjourney o Canva Magic Studio).</td>
+                                        <td>Herramientas profesionales sin costo para estudiantes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hosting Básico</strong></td>
+                                        <td>Un espacio pequeño en los servidores de la universidad para alojar los prototipos web en HTML que vayamos creando.</td>
+                                        <td>Mostrar proyectos reales y crear portafolio estudiantil</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <h3>Difusión y Apoyo Institucional</h3>
+                            <ul>
+                                <li><strong>Canales Oficiales:</strong> Apoyo de la UQRoo para difundir las convocatorias en redes sociales, correos institucionales y pantallas del campus.</li>
+                                <li><strong>Reconocimiento:</strong> Que la participación en el club pueda contar como horas de servicio social o currículum extracurricular para motivar a la banda a unirse.</li>
+                            </ul>
+                            
+                            <h3>Logística de Reuniones</h3>
+                            <ul>
+                                <li><strong>Horarios Flexibles:</strong> Definir una o dos tardes a la semana que no choquen con las clases de la mayoría de las carreras.</li>
+                                <li><strong>Calendarización:</strong> Establecer un calendario académico para las actividades del club.</li>
+                                <li><strong>Coordinación:</strong> Designación de un profesor o personal administrativo como enlace con el club.</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'impacto':
+                    detailTitle.textContent = "IMPACTO ESPERADO";
+                    detailSubtitle.textContent = "Beneficios para la UQROO y la comunidad estudiantil";
+                    detailContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Valor Agregado para la Universidad</h3>
+                            <p>La implementación exitosa del Club de IA Generativa generará múltiples beneficios para la institución:</p>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Vanguardia Académica:</strong> Posicionar a la UQRoo como una universidad líder en el estado que no solo usa tecnología, sino que la cuestiona y la domina éticamente.</p>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Talento Multidisciplinario:</strong> Estudiantes de todas las áreas con mejores habilidades digitales, listos para un mercado laboral que ya exige saber usar IA.</p>
+                            </div>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Comunidad Conectada:</strong> Un espacio de convivencia donde estudiantes de diferentes carreras colaboran en proyectos reales.</p>
+                            </div>
+                            
+                            <h3>Impacto Cuantificable</h3>
+                            <ul>
+                                <li><strong>Incremento en competencias digitales:</strong> Estudiantes capacitados en herramientas de vanguardia</li>
+                                <li><strong>Mejora en proyectos académicos:</strong> Aplicación de IA en tesis, investigaciones y trabajos finales</li>
+                                <li><strong>Reducción de plagio:</strong> Uso ético y transparente de herramientas de IA</li>
+                                <li><strong>Proyectos de impacto local:</strong> Soluciones tecnológicas a problemas de Quintana Roo</li>
+                                <li><strong>Vinculación interdisciplinaria:</strong> Colaboración entre estudiantes de diferentes facultades</li>
+                            </ul>
+                            
+                            <h3>Proyección a Mediano Plazo</h3>
+                            <ul>
+                                <li>Consolidación del club como referente en innovación educativa</li>
+                                <li>Participación en competencias y eventos nacionales de tecnología</li>
+                                <li>Publicación de resultados y experiencias en foros académicos</li>
+                                <li>Colaboraciones con otras instituciones educativas</li>
+                                <li>Generación de proyectos con impacto social comprobable</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'ruta':
+                    detailTitle.textContent = "RUTA DE CRECIMIENTO";
+                    detailSubtitle.textContent = "Fases de implementación y expansión del proyecto";
+                    detailContent.innerHTML = `
+                        <div class="detail-section">
+                            <h3>Estrategia de Implementación</h3>
+                            <p>Para asegurar que el club sea sólido y exitoso, el proyecto se dividirá en dos etapas estratégicas:</p>
+                            
+                            <div class="phases-container">
+                                <div class="phase-card">
+                                    <div class="phase-number">1</div>
+                                    <h4>FASE 1: LANZAMIENTO PILOTO</h4>
+                                    <p><strong>Campus Chetumal Bahía</strong></p>
+                                    <p>Iniciaremos actividades exclusivamente en este campus para validar la metodología, ajustar los talleres y crear nuestra primera comunidad de "IA Evangelistas".</p>
+                                    <ul style="margin-top: 15px;">
+                                        <li>Validación de metodología y contenidos</li>
+                                        <li>Ajuste de actividades según feedback estudiantil</li>
+                                        <li>Creación de comunidad base y líderes estudiantiles</li>
+                                        <li>Desarrollo de manuales y materiales de apoyo</li>
+                                        <li>Evaluación de resultados e impacto inicial</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="phase-card">
+                                    <div class="phase-number">2</div>
+                                    <h4>FASE 2: EXPANSIÓN ESTATAL</h4>
+                                    <p><strong>Todos los campus UQROO</strong></p>
+                                    <p>Una vez consolidado el modelo en Chetumal y analizados los resultados, extenderemos la invitación y las actividades a los campus de Chetumal Salud, Felipe Carrillo Puerto, Cancún, Cozumel y Playa del Carmen, ya sea de forma presencial o con sesiones híbridas.</p>
+                                    <ul style="margin-top: 15px;">
+                                        <li>Expansión a 5 campus adicionales</li>
+                                        <li>Implementación de modalidad híbrida (presencial/virtual)</li>
+                                        <li>Creación de red estatal de clubes de IA</li>
+                                        <li>Coordinación centralizada de actividades</li>
+                                        <li>Compartición de recursos y mejores prácticas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <h3>Cronograma Tentativo</h3>
+                            <ul>
+                                <li><strong>Mes 1-3:</strong> Planeación y gestión de recursos (Fase 1)</li>
+                                <li><strong>Mes 4-6:</strong> Implementación piloto en Chetumal Bahía</li>
+                                <li><strong>Mes 7-9:</strong> Evaluación y ajustes de la fase piloto</li>
+                                <li><strong>Mes 10-12:</strong> Preparación para expansión a otros campus</li>
+                                <li><strong>Mes 13-18:</strong> Implementación en 2-3 campus adicionales</li>
+                                <li><strong>Mes 19-24:</strong> Expansión completa a todos los campus</li>
+                            </ul>
+                            
+                            <div class="highlight-box">
+                                <p><strong>Nota:</strong> Esta ruta de crecimiento es flexible y se ajustará según los resultados obtenidos en cada fase, siempre priorizando la calidad sobre la velocidad de expansión.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            // Hacer scroll al inicio del contenido
+            detailContent.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
