@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad: Semáforo de la Administración</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 { color: #2c3e50; }
+        p.instrucciones { color: #7f8c8d; margin-bottom: 30px; text-align: center; max-width: 600px; }
+
+        .container {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Estilo del Semáforo */
+        .semaforo {
+            background-color: #333;
+            width: 140px;
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .luz {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8em;
+            color: rgba(255,255,255,0.7);
+            border: 4px dashed transparent;
+            transition: all 0.3s;
+        }
+
+        .rojo { background-color: #962121; }
+        .amarillo { background-color: #b5a11d; }
+        .verde { background-color: #217346; }
+
+        .luz.drag-over {
+            border-color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #fff;
+        }
+
+        /* Estilo de las Afirmaciones */
+        .afirmaciones-container {
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: grab;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+            font-size: 0.95em;
+            transition: transform 0.2s;
+        }
+
+        .tarjeta:active { cursor: grabbing; }
+        .tarjeta.hidden { display: none; }
+
+        #mensaje {
+            margin-top: 20px;
+            font-weight: bold;
+            height: 30px;
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Semáforo de la Administración</h1>
+    <p class="instrucciones">Clasifica cada afirmación arrastrándola hacia el color del semáforo que corresponda según su validez.</p>
+
+    <div class="container">
+        <!-- El Semáforo -->
+        <div class="semaforo">
+            <div class="luz rojo" id="rojo" ondrop="drop(event)" ondragover="allowDrop(event)">INCORRECTO</div>
+            <div class="luz amarillo" id="amarillo" ondrop="drop(event)" ondragover="allowDrop(event)">PARCIAL</div>
+            <div class="luz verde" id="verde" ondrop="drop(event)" ondragover="allowDrop(event)">CORRECTO</div>
+        </div>
+
+        <!-- Lista de Afirmaciones -->
+        <div class="afirmaciones-container" id="lista-afirmaciones">
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a1" data-res="rojo">Administrar consiste en resolver los problemas conforme van apareciendo.</div>
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a2" data-res="verde">Una organización funciona mejor cuando cada persona entiende su papel y coopera con otras.</div>
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a3" data-res="rojo">La función principal del administrador es vigilar que los demás trabajen.</div>
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a4" data-res="verde">Tomar decisiones forma parte central del trabajo administrativo.</div>
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a5" data-res="rojo">Las habilidades blandas, como comunicación y trabajo en equipo, son secundarias para un administrador.</div>
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a6" data-res="rojo">La administración es importante solo en empresas grandes.</div>
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a7" data-res="verde">Planear, organizar, dirigir y controlar ayuda a que una empresa alcance sus objetivos.</div>
+            <div class="tarjeta" draggable="true" ondragstart="drag(event)" id="a8" data-res="verde">Un administrador actual necesita combinar conocimientos técnicos con capacidades analíticas, sociales y adaptativas.</div>
+        </div>
+    </div>
+
+    <div id="mensaje"></div>
+    <button class="reset-btn" onclick="location.reload()">Reiniciar Actividad</button>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            ev.target.classList.add('dragging');
+        }
+
+        // Efectos visuales al entrar en la zona
+        document.querySelectorAll('.luz').forEach(luz => {
+            luz.addEventListener('dragenter', () => luz.classList.add('drag-over'));
+            luz.addEventListener('dragleave', () => luz.classList.remove('drag-over'));
+        });
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const tarjeta = document.getElementById(data);
+            const destino = ev.target.id;
+            const respuestaCorrecta = tarjeta.getAttribute('data-res');
+            const mensajeDiv = document.getElementById('mensaje');
+
+            ev.target.classList.remove('drag-over');
+
+            if (destino === respuestaCorrecta) {
+                mensajeDiv.style.color = "#27ae60";
+                mensajeDiv.innerText = "¡Correcto!";
+                tarjeta.classList.add('hidden');
+                checkWin();
+            } else {
+                mensajeDiv.style.color = "#e74c3c";
+                mensajeDiv.innerText = "Respuesta incorrecta, intenta de nuevo.";
+            }
+        }
+
+        function checkWin() {
+            const restantes = document.querySelectorAll('.tarjeta:not(.hidden)');
+            if (restantes.length === 0) {
+                document.getElementById('mensaje').innerText = "¡Excelente! Has clasificado todas las afirmaciones correctamente.";
+                document.getElementById('mensaje').style.fontSize = "1.2em";
+            }
+        }
+    </script>
+</body>
+</html>
